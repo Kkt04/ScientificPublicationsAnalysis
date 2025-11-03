@@ -36,7 +36,7 @@ class PublicationAnalyzer:
     
     def analyze_timeline(self, df):
         """Analyze publication timeline"""
-        print("\n📅 ANALYZING PUBLICATION TIMELINE...")
+        print("\n ANALYZING PUBLICATION TIMELINE...")
         df['year'] = pd.to_datetime(df['update_date']).dt.year
         yearly_counts = df['year'].value_counts().sort_index()
         
@@ -54,7 +54,7 @@ class PublicationAnalyzer:
     
     def analyze_abstracts(self, df):
         """Basic analysis of paper abstracts"""
-        print("\n📝 ANALYZING PAPER ABSTRACTS...")
+        print("\n ANALYZING PAPER ABSTRACTS...")
         
         df['abstract_length'] = df['abstract'].str.len()
         
@@ -82,7 +82,7 @@ class PublicationAnalyzer:
         return df['abstract_length'].describe()
 
 def main_analysis():
-    print("🚀 STARTING ARXIV DATASET ANALYSIS - PHASE 1")
+    print(" STARTING ARXIV DATASET ANALYSIS - PHASE 1")
     print("="*60)
     
     analyzer = PublicationAnalyzer()
@@ -96,14 +96,14 @@ def main_analysis():
     abstracts = analyzer.analyze_abstracts(df)
     
     print("\n" + "="*60)
-    print("✅ PHASE 1 ANALYSIS COMPLETE!")
+    print(" PHASE 1 ANALYSIS COMPLETE!")
     print("="*60)
-    print("📈 Generated Charts:")
+    print(" Generated Charts:")
     print("   - top_categories.png (Top 10 research categories)")
     print("   - publication_timeline.png (Publication growth)")
     print("   - abstract_analysis.png (Abstract length analysis)")
-    print(f"📚 Papers analyzed: {len(df):,}")
-    print(f"🔬 Categories found: {df['category_list'].explode().nunique()}")
+    print(f" Papers analyzed: {len(df):,}")
+    print(f" Categories found: {df['category_list'].explode().nunique()}")
 
 if __name__ == "__main__":
     main_analysis()
