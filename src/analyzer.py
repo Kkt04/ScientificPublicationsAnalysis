@@ -88,8 +88,8 @@ def main_analysis():
     analyzer = PublicationAnalyzer()
     df = analyzer.load_sample_data()
     
-    print(f"📁 Loaded dataset with {len(df)} papers")
-    print(f"📊 Columns: {list(df.columns)}")
+    print(f" Loaded dataset with {len(df)} papers")
+    print(f" Columns: {list(df.columns)}")
     
     categories = analyzer.analyze_categories(df)
     timeline = analyzer.analyze_timeline(df)
