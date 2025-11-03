@@ -11,11 +11,11 @@ class DataLoader:
         
     def create_sample_from_real_data(self, sample_size=1000):
         """Create a manageable sample from the real ArXiv dataset"""
-        print("📥 Creating sample from real ArXiv data...")
+        print(" Creating sample from real ArXiv data...")
         
         # Check if raw data exists
         if not os.path.exists(self.raw_data_path):
-            print("❌ Real dataset not found! Creating demo data instead.")
+            print(" Real dataset not found! Creating demo data instead.")
             return self.create_demo_data()
         
         sample_data = []
@@ -30,7 +30,7 @@ class DataLoader:
                         'title': data.get('title', ''),
                         'authors': data.get('authors', ''),
                         'categories': data.get('categories', ''),
-                        'abstract': data.get('abstract', '')[:200] + '...',  # First 200 chars
+                        'abstract': data.get('abstract', '')[:200] + '...',
                         'update_date': data.get('update_date', ''),
                         'versions': len(data.get('versions', []))
                     })
@@ -40,17 +40,17 @@ class DataLoader:
             os.makedirs('data/sample', exist_ok=True)
             
             df.to_csv(self.sample_data_path, index=False)
-            print(f"✅ Sample created with {len(df)} records from real data!")
+            print(f" Sample created with {len(df)} records from real data!")
             return df
             
         except Exception as e:
-            print(f"❌ Error reading real data: {e}")
-            print("🔄 Creating demo data instead...")
+            print(f" Error reading real data: {e}")
+            print(" Creating demo data instead...")
             return self.create_demo_data()
     
     def create_demo_data(self):
         """Create demo data if real dataset is not available"""
-        print("📝 Creating demo data for testing...")
+        print(" Creating demo data for testing...")
         
         demo_data = {
             'id': [f'2001.0000{i}' for i in range(1, 101)],
@@ -65,13 +65,13 @@ class DataLoader:
         df = pd.DataFrame(demo_data)
         os.makedirs('data/sample', exist_ok=True)
         df.to_csv(self.sample_data_path, index=False)
-        print("✅ Demo data created with 100 records!")
+        print(" Demo data created with 100 records!")
         return df
     
     def get_data_stats(self, df):
         """Get statistics about the dataset"""
         print("\n" + "="*60)
-        print("📊 DATASET STATISTICS")
+        print(" DATASET STATISTICS")
         print("="*60)
         print(f"Total papers: {len(df):,}")
         print(f"Columns: {list(df.columns)}")
